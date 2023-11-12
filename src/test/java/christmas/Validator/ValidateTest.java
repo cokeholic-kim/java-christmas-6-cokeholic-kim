@@ -35,7 +35,7 @@ class ValidateTest {
     @DisplayName("메뉴의 입력값 검증")
     @ParameterizedTest
     @CsvSource({
-            "notContainedMenu1 =티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1",
+            "notContainedMenu1 =티본스테이크-1,바큐립-1,초코케이크-2,제로콜라-1",
             "notContainedMenu2 =다이어트콜라-1,바베큐립-1,초코케이크-2,제로콜라-1",
             "notContainedMenu3 =해잔물파스타-2,레드와인-1,초코케이크-1",
             "MenuCountWrong1 =티본스테이크-0,바베큐립-0,시저샐러드-0,제로콜라-0",

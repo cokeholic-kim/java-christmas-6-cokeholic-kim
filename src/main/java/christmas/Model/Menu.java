@@ -1,4 +1,4 @@
-package christmas;
+package christmas.Model;
 
 import java.util.Arrays;
 
@@ -7,7 +7,7 @@ public enum Menu {
     TAPAS("appetizer", "타파스", 5_500),
     CAESAR_SALAD("appetizer", "시저샐러드", 8_000),
     TBONE_STEAK("main", "티본스테이크", 55_000),
-    BARBECUE_RIB("main", "바베큐립", 54_000),
+    BARBECUE_RIB("main", "바비큐립", 54_000),
     SEAFOOD_PASTA("main", "해산물파스타", 35_000),
     CHRISTMAS_PASTA("main", "크리스마스파스타", 25_000),
     CHOCOLATE_CAKE("dessert", "초코케이크", 15_000),
