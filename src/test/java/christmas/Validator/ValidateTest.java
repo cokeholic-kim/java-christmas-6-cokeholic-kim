@@ -47,8 +47,22 @@ class ValidateTest {
             "MenuRedundant =티본스테이크-1,티본스테이크-2",
             "MenuOnlyDrink =제로콜라-1,레드와인-2"
     })
-    void testMenuOrderValidate(String order){
-        assertThatThrownBy(() -> Validate.validateOrder(order)).isInstanceOf(IllegalArgumentException.class)
+    void testMenuOrderValidate(String input) {
+        assertThatThrownBy(() -> Validate.validateOrder(input)).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_ORDER_MESSAGE)
+                .hasMessageStartingWith(ERROR_PREFIX);
+    }
+
+    @DisplayName("날짜의 입력값 검증")
+    @ParameterizedTest
+    @CsvSource({
+            "notNumber1 =12일",
+            "notNumber2 =12월 24일",
+            "outOfRange1 =0",
+            "outOfRange2 =32",
+    })
+    void testDateValidate(String input) {
+        assertThatThrownBy(() -> Validate.validateDate(input)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_ORDER_MESSAGE)
                 .hasMessageStartingWith(ERROR_PREFIX);
     }
