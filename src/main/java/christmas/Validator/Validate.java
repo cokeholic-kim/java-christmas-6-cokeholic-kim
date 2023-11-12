@@ -2,7 +2,7 @@ package christmas.Validator;
 
 import static christmas.ErrorMessage.INVALID_ORDER_MESSAGE;
 
-import christmas.Menu;
+import christmas.Model.Menu;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -10,9 +10,11 @@ import java.util.regex.Pattern;
 
 public class Validate {
     private static final int MINIMUM_QUANTITY = 1;
-    private static final int MAXIMAL_QUANTITY = 20;
+    private static final int MAXIMAM_QUANTITY = 20;
     private static final Pattern ORDER_PATTERN = Pattern.compile("\\b[가-힣]+-\\d+\\b");
 
+    private static final int MINIMUN_DATE = 1;
+    private static final int MAXIMAM_DATE = 31;
     public static void validateOrder(String input) {
         checkMenuForm(input);
         checkMenuRedundant(input);
@@ -28,7 +30,7 @@ public class Validate {
 
     private static void checkDateOutOfRange(String input) {
         int date = Integer.parseInt(input);
-        if (1 > date || 31 < date) {
+        if (MINIMUN_DATE > date || MAXIMAM_DATE < date) {
             throw new IllegalArgumentException(INVALID_ORDER_MESSAGE);
         }
     }
@@ -66,7 +68,7 @@ public class Validate {
 
     private static void checkMenuCount(String input) {
         int count = countMenuQuantity(orderMapper(input));
-        if (count > MAXIMAL_QUANTITY || count < MINIMUM_QUANTITY) {
+        if (count > MAXIMAM_QUANTITY || count < MINIMUM_QUANTITY) {
             throw new IllegalArgumentException(INVALID_ORDER_MESSAGE);
         }
     }
@@ -75,7 +77,6 @@ public class Validate {
     private static void checkMenuAvailability(String orders) {
         Map<String, Integer> orderMenu = orderMapper(orders);
         orderMenu.keySet().forEach(menuName -> {
-
             if (Menu.returnMenu(menuName) == Menu.NONE) {
                 throw new IllegalArgumentException(INVALID_ORDER_MESSAGE);
             }
