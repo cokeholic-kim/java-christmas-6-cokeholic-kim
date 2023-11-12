@@ -34,7 +34,15 @@ public enum Menu {
                 .orElse(NONE);
     }
 
-    public static boolean isContainedMenu(Menu menu, String menuName) {
+    public String getCategory() {
+        return category;
+    }
+
+    public int getPrice(){
+        return price;
+    }
+
+    private static boolean isContainedMenu(Menu menu, String menuName) {
         return menuName.equals(menu.name);
     }
 }
