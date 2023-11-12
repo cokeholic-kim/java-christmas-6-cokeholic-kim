@@ -39,24 +39,57 @@ class ValidateTest {
             "다이어트콜라-1,바베큐립-1,초코케이크-2,제로콜라-1",
             "해잔물파스타-2,레드와인-1,초코케이크-1"})
     void validateOrderTest(String input) {
-        assertThatThrownBy(() -> {
-            Validate.validateOrder(input);
-        }).isInstanceOf(IllegalArgumentException.class)
+        assertThatThrownBy(() -> Validate.validateOrder(input)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_ORDER_MESSAGE)
                 .hasMessageStartingWith(ERROR_PREFIX);
     }
+
     //TODO : 테스트에 들어가는 파라미터만다르고 동작은 일치하므로 이후에 파라미터와 기대값 으로 나누어서 하나로 합치기
     @DisplayName("메뉴의 갯수가 1개이상 20개이하가 아닌 경우")
     @ParameterizedTest
     @ValueSource(strings = {
             "티본스테이크-0,바베큐립-0,시저샐러드-0,제로콜라-0",
             "티본스테이크-19,바베큐립-2",
-            "바베큐립-19,시저샐러드-1,제로콜라-1",
+            "바베큐립-19,시저샐러드-1,제로콜라-3",
     })
-    void validateOrderCountTest(String input){
-        assertThatThrownBy(() -> {
-            Validate.validateOrder(input);
-        }).isInstanceOf(IllegalArgumentException.class)
+    void validateOrderCountTest(String input) {
+        assertThatThrownBy(() -> Validate.validateOrder(input)).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_ORDER_MESSAGE)
+                .hasMessageStartingWith(ERROR_PREFIX);
+    }
+
+    @DisplayName("메뉴의 입력형식이 예시와 다른경우")
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "티본스테이크/1,바베큐립-5",
+            "시저샐러드--2,제로콜라-4",
+            "시저샐러드-3개,제로콜라-11개",
+            ""
+    })
+    void validateCheckFormTest(String input) {
+        assertThatThrownBy(() -> Validate.validateOrder(input)).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_ORDER_MESSAGE)
+                .hasMessageStartingWith(ERROR_PREFIX);
+    }
+
+    @DisplayName("메뉴가 중복된 경우")
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "티본스테이크-1,티본스테이크-2"
+    })
+    void validateCheckMenuRedundant(String input) {
+        assertThatThrownBy(() -> Validate.validateOrder(input)).isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_ORDER_MESSAGE)
+                .hasMessageStartingWith(ERROR_PREFIX);
+    }
+
+    @DisplayName("음료만 주문하는경우")
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "제로콜라-1,레드와인-2"
+    })
+    void validateCheckMenuOnlyDrink(String input) {
+        assertThatThrownBy(() -> Validate.validateOrder(input)).isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_ORDER_MESSAGE)
                 .hasMessageStartingWith(ERROR_PREFIX);
     }
