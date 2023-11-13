@@ -4,6 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 class EventTest {
 
@@ -45,5 +48,15 @@ class EventTest {
         assertThat(
                 event.dateDiscountEvent(date)
         ).isEqualTo(8092);
+    }
+
+    @ParameterizedTest
+    @DisplayName("특별할인금액 테스트")
+    @ValueSource(ints = {3,10,17,24,25,31})
+    void calculateSpecialDiscountEvent(int date){
+        Event event = new Event(new Recipt("티본스테이크-2,해산물파스타-3,아이스크림-4"));
+        assertThat(
+                event.specialDiscountEvent(date)
+        ).isEqualTo(1000);
     }
 }

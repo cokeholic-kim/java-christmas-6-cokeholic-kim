@@ -1,6 +1,8 @@
 package christmas.Model;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 public class Event {
     private final Recipt recipt;
@@ -31,6 +33,14 @@ public class Event {
         }
         if(calculateWeekendDay(dayNumber) && eventStatus){
             return YEAR * recipt.countCategory("main");
+        }
+        return 0;
+    }
+
+    public int specialDiscountEvent(int date){
+        List<Integer> specialDays = Arrays.asList(3,10,17,24,25,31) ;
+        if(specialDays.contains(date) && eventStatus){
+            return 1000;
         }
         return 0;
     }
