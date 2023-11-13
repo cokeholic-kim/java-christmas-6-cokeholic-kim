@@ -9,7 +9,7 @@ class EventTest {
 
     @Test
     @DisplayName("크리스마스때까지 100원씩증가하는이벤트 총금액이 만원미만")
-    void calCulateDdayEventFalseTest() {
+    void calculateDdayEventFalseTest() {
         Event event = new Event(new Recipt("아이스크림-1"));
         int date = 25;
         assertThat(
@@ -19,11 +19,31 @@ class EventTest {
 
     @Test
     @DisplayName("크리스마스때까지 100원씩증가하는이벤트 총금액이 만원이상")
-    void calCulateDdayEventTrueTest() {
+    void calculateDdayEventTrueTest() {
         Event event = new Event(new Recipt("아이스크림-4"));
         int date = 25;
         assertThat(
                 event.calCulateDdayEvent(date)
         ).isEqualTo(3400);
+    }
+
+    @Test
+    @DisplayName("주말할인금액 테스트")
+    void calculateWeekendDiscount(){
+        Event event = new Event(new Recipt("티본스테이크-2,해산물파스타-3,아이스크림-4"));
+        int date = 9; // 주말 8,9
+        assertThat(
+                event.dateDiscountEvent(date)
+        ).isEqualTo(10115);
+    }
+
+    @Test
+    @DisplayName("평일할인금액 테스트")
+    void calculateWeekdayDiscount(){
+        Event event = new Event(new Recipt("티본스테이크-2,해산물파스타-3,아이스크림-4"));
+        int date = 7; // 주말 7,8
+        assertThat(
+                event.dateDiscountEvent(date)
+        ).isEqualTo(8092);
     }
 }
