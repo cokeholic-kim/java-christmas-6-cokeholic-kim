@@ -13,7 +13,23 @@ class ReciptTest {
     @DisplayName("주문한 금액의 총합을 계산")
     void calculateTotal() {
         assertThat(
-         recipt.CalculateTotal()
+         recipt.calculateTotal()
         ).isEqualTo(142000);
+    }
+
+    @Test
+    @DisplayName("디저트의 갯수를 카운트")
+    void countDessertTest(){
+        assertThat(
+                recipt.countCategory("dessert")
+        ).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("메인의 갯수를 카운트")
+    void countMainTest(){
+        assertThat(
+                recipt.countCategory("main")
+        ).isEqualTo(2);
     }
 }

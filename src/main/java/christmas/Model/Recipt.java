@@ -2,6 +2,7 @@ package christmas.Model;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Recipt {
@@ -15,7 +16,17 @@ public class Recipt {
                 ));
     }
 
-    public int CalculateTotal(){
+    public Map<Menu, Integer> getRecipt(){
+        return recipt;
+    }
+
+    public int countCategory(String category){
+        return recipt.entrySet().stream()
+                .filter(entry -> Objects.equals(entry.getKey().getCategory(), category))
+                .mapToInt(Map.Entry :: getValue)
+                .sum();
+    }
+    public int calculateTotal(){
         return recipt.entrySet().stream()
                 .mapToInt(recipt -> recipt.getKey().getPrice() * recipt.getValue())
                 .sum();
