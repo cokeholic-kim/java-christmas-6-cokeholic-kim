@@ -83,4 +83,13 @@ class EventTest {
                 event.giveawayEvnetPrice()
         ).isEqualTo(0);
     }
+
+    @Test
+    @DisplayName("총 할인금액 테스트")
+    void calculateTotalEventPriceTest(){
+        Event event = new Event(new Recipt("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1"));
+        assertThat(
+                event.calculateTotalEventPrice(3)
+        ).isEqualTo(31246);
+    }
 }

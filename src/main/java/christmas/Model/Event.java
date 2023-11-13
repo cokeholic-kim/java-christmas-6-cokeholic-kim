@@ -50,8 +50,17 @@ public class Event {
     }
 
     public int giveawayEvnetPrice(){
-        if(giveawayEvent() && eventStatus) return 20000;
+        if(giveawayEvent() && eventStatus) return 25000;
         return 0;
+    }
+
+    public int calculateTotalEventPrice(int date){
+        if(!eventStatus) return 0;
+        int dDayEvent = calCulateDdayEvent(date);
+        int dateEvent = dateDiscountEvent(date);
+        int specialEvent = specialDiscountEvent(date);
+        int giveawayEvent = giveawayEvnetPrice();
+        return dDayEvent + dateEvent + specialEvent + giveawayEvent;
     }
 
     private boolean calculateWeekDay(int dayNumber){
