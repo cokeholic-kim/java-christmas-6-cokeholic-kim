@@ -44,6 +44,16 @@ public class Event {
         }
         return 0;
     }
+
+    public boolean giveawayEvent(){
+        return recipt.calculateTotal() >= 120000;
+    }
+
+    public int giveawayEvnetPrice(){
+        if(giveawayEvent() && eventStatus) return 20000;
+        return 0;
+    }
+
     private boolean calculateWeekDay(int dayNumber){
         return (1 <= dayNumber && dayNumber <= 4) || dayNumber == 7;
     }

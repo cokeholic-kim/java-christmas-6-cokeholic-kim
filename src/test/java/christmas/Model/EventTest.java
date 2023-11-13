@@ -59,4 +59,28 @@ class EventTest {
                 event.specialDiscountEvent(date)
         ).isEqualTo(1000);
     }
+
+    @Test
+    @DisplayName("증정품 이벤트")
+    void giveawayEvnetTest(){
+        Event event = new Event(new Recipt("티본스테이크-2,해산물파스타-3,아이스크림-4"));
+        assertThat(
+                event.giveawayEvent()
+        ).isEqualTo(true);
+        assertThat(
+                event.giveawayEvnetPrice()
+        ).isEqualTo(20000);
+    }
+
+    @Test
+    @DisplayName("증정품 이벤트 해당없음")
+    void giveawayEvnetPriceTest(){
+        Event event = new Event(new Recipt("티본스테이크-1"));
+        assertThat(
+                event.giveawayEvent()
+        ).isEqualTo(false);
+        assertThat(
+                event.giveawayEvnetPrice()
+        ).isEqualTo(0);
+    }
 }
