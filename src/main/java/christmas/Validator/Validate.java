@@ -67,10 +67,12 @@ public class Validate {
     }
 
     private static void checkMenuCount(String input) {
-        int count = countMenuQuantity(orderMapper(input));
-        if (count > MAXIMAM_QUANTITY || count < MINIMUM_QUANTITY) {
-            throw new IllegalArgumentException(INVALID_ORDER_MESSAGE);
-        }
+        orderMapper(input).values()
+                .forEach( count ->{
+                    if (count > MAXIMAM_QUANTITY || count < MINIMUM_QUANTITY) {
+                        throw new IllegalArgumentException(INVALID_ORDER_MESSAGE);
+                    }
+                });
     }
 
 
