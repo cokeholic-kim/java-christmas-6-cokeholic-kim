@@ -9,25 +9,27 @@ public class Event {
     private boolean eventStatus = false;
     private final int YEAR = 2023;
     private final int MONTH = 12;
-    Event(Recipt recipt){
+    private final int date;
+    Event(Recipt recipt,int date){
         this.recipt = recipt;
+        this.date = date;
         if(recipt.calculateTotal() > 10000) this.eventStatus = true;
     }
-    public int calCulateDdayEvent(int date){
+    public int calCulateDdayEvent(){
         if(date > 25 || !eventStatus){
             return 0;
         }
         return (date - 1) * 100 + 1000;
     }
 
-    public int dateDiscountEvent(int date){
+    public int dateDiscountEvent(){
 //        - [ ] 평일 할인 이벤트
 //                - 일요일 ~ 목요일
 //                - [ ] 디저트메뉴 1개당 2023원 할인
 //        - [ ] 주말 할인 이벤트
 //                - 금요일,토요일
 //                -[ ] 메인메뉴 1개당 2023원 할인
-        int dayNumber = getDateNumber(date);
+        int dayNumber = getDateNumber();
         if(calculateWeekDay(dayNumber) && eventStatus){
             return YEAR * recipt.countCategory("dessert");
         }
@@ -37,7 +39,7 @@ public class Event {
         return 0;
     }
 
-    public int specialDiscountEvent(int date){
+    public int specialDiscountEvent(){
         List<Integer> specialDays = Arrays.asList(3,10,17,24,25,31) ;
         if(specialDays.contains(date) && eventStatus){
             return 1000;
@@ -54,13 +56,16 @@ public class Event {
         return 0;
     }
 
-    public int calculateTotalEventPrice(int date){
+    public int calculateTotalEventPrice(){
         if(!eventStatus) return 0;
-        int dDayEvent = calCulateDdayEvent(date);
-        int dateEvent = dateDiscountEvent(date);
-        int specialEvent = specialDiscountEvent(date);
+        int dDayEvent = calCulateDdayEvent();
+        int dateEvent = dateDiscountEvent();
+        int specialEvent = specialDiscountEvent();
         int giveawayEvent = giveawayEvnetPrice();
         return dDayEvent + dateEvent + specialEvent + giveawayEvent;
+    }
+    public Badge giveBadge(){
+        return Badge.returnBadge(calculateTotalEventPrice());
     }
 
     private boolean calculateWeekDay(int dayNumber){
@@ -69,7 +74,7 @@ public class Event {
     private boolean calculateWeekendDay(int dayNumber){
         return 5 <= dayNumber && dayNumber <= 6;
     }
-    private int getDateNumber(int date){
+    private int getDateNumber(){
         return LocalDate.of(YEAR,MONTH,date).getDayOfWeek().getValue();
     }
 }
