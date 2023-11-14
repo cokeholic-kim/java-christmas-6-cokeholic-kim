@@ -1,5 +1,6 @@
 package christmas.Validator;
 
+import static christmas.ErrorMessage.INVALID_DATE_MESSAGE;
 import static christmas.ErrorMessage.INVALID_ORDER_MESSAGE;
 
 import christmas.Model.Menu;
@@ -31,13 +32,13 @@ public class Validate {
     private static void checkDateOutOfRange(String input) {
         int date = Integer.parseInt(input);
         if (MINIMUN_DATE > date || MAXIMAM_DATE < date) {
-            throw new IllegalArgumentException(INVALID_ORDER_MESSAGE);
+            throw new IllegalArgumentException(INVALID_DATE_MESSAGE);
         }
     }
 
     private static void checkDateNotNumber(String input) {
         if (!input.matches("\\d+")) {
-            throw new IllegalArgumentException(INVALID_ORDER_MESSAGE);
+            throw new IllegalArgumentException(INVALID_DATE_MESSAGE);
         }
     }
 
