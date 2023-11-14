@@ -3,7 +3,7 @@ package christmas.Model;
 import java.util.Arrays;
 
 public enum Badge {
-    NONE(0,""),
+    NONE(0,"없음"),
     STAR(5000,"별"),
     TREE(10000,"트리"),
     SANTA(20000,"산타");
