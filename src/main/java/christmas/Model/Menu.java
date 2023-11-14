@@ -29,7 +29,7 @@ public enum Menu {
 
     public static Menu returnMenu(String orderedMenu) {
         return Arrays.stream(Menu.values())
-                .filter(menu -> isContainedMenu(menu,orderedMenu))
+                .filter(menu -> isContainedMenu(menu, orderedMenu))
                 .findFirst()
                 .orElse(NONE);
     }
@@ -38,10 +38,13 @@ public enum Menu {
         return category;
     }
 
-    public int getPrice(){
+    public int getPrice() {
         return price;
     }
-    public String getName(){return name;}
+
+    public String getName() {
+        return name;
+    }
 
     private static boolean isContainedMenu(Menu menu, String menuName) {
         return menuName.equals(menu.name);

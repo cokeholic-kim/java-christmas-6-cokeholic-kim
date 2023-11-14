@@ -16,6 +16,7 @@ public class Validate {
 
     private static final int MINIMUN_DATE = 1;
     private static final int MAXIMAM_DATE = 31;
+
     public static void validateOrder(String input) {
         checkMenuForm(input);
         checkMenuRedundant(input);
@@ -69,7 +70,7 @@ public class Validate {
 
     private static void checkMenuCount(String input) {
         orderMapper(input).values()
-                .forEach( count ->{
+                .forEach(count -> {
                     if (count > MAXIMAM_QUANTITY || count < MINIMUM_QUANTITY) {
                         throw new IllegalArgumentException(INVALID_ORDER_MESSAGE);
                     }

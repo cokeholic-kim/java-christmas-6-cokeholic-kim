@@ -3,10 +3,10 @@ package christmas.Model;
 import java.util.Arrays;
 
 public enum Badge {
-    NONE(0,"없음"),
-    STAR(5000,"별"),
-    TREE(10000,"트리"),
-    SANTA(20000,"산타");
+    NONE(0, "없음"),
+    STAR(5000, "별"),
+    TREE(10000, "트리"),
+    SANTA(20000, "산타");
 
     private final int minimumPrice;
     private final String badgeName;
@@ -16,13 +16,13 @@ public enum Badge {
         this.badgeName = badgeName;
     }
 
-    public String getBadgeName(){
+    public String getBadgeName() {
         return badgeName;
     }
 
-    public static Badge returnBadge(int price){
+    public static Badge returnBadge(int price) {
         return Arrays.stream(Badge.values())
-                .sorted((b1,b2) -> Integer.compare(b2.minimumPrice, b1.minimumPrice))
+                .sorted((b1, b2) -> Integer.compare(b2.minimumPrice, b1.minimumPrice))
                 .filter(badge -> badge.minimumPrice <= price)
                 .findFirst()
                 .orElse(NONE);

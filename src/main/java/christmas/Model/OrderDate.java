@@ -26,6 +26,7 @@ public class OrderDate {
     public int getDateNumber() {
         return LocalDate.of(YEAR, MONTH, DATE).getDayOfWeek().getValue();
     }
+
     public boolean isWeekDay() {
         return (1 <= getDateNumber() && getDateNumber() <= 4) || getDateNumber() == 7;
     }
