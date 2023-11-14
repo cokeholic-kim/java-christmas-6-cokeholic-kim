@@ -1,6 +1,7 @@
 package christmas.Validator;
 
 import static christmas.ErrorMessage.ERROR_PREFIX;
+import static christmas.ErrorMessage.INVALID_DATE_MESSAGE;
 import static christmas.ErrorMessage.INVALID_ORDER_MESSAGE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -63,7 +64,7 @@ class ValidateTest {
     })
     void testDateValidate(String input) {
         assertThatThrownBy(() -> Validate.validateDate(input)).isInstanceOf(IllegalArgumentException.class)
-                .hasMessage(INVALID_ORDER_MESSAGE)
+                .hasMessage(INVALID_DATE_MESSAGE)
                 .hasMessageStartingWith(ERROR_PREFIX);
     }
 }
