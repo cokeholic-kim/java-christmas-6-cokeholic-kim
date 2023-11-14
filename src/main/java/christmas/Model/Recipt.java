@@ -31,4 +31,10 @@ public class Recipt {
                 .mapToInt(recipt -> recipt.getKey().getPrice() * recipt.getValue())
                 .sum();
     }
+
+    public String getOrder(){
+        return recipt.entrySet().stream()
+                .map(order->  order.getKey().getName() + order.getValue() + "개" )
+                .collect(Collectors.joining("\n"));
+    }
 }
