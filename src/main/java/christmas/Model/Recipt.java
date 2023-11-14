@@ -16,10 +16,6 @@ public class Recipt {
                 ));
     }
 
-    public Map<Menu, Integer> getRecipt() {
-        return recipt;
-    }
-
     public int countCategory(String category) {
         return recipt.entrySet().stream()
                 .filter(entry -> Objects.equals(entry.getKey().getCategory(), category))
