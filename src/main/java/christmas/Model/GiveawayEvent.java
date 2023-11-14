@@ -9,7 +9,7 @@ public class GiveawayEvent implements Event {
         this.orderDate = orderDate;
     }
 
-    public boolean giveawayEvent() {
+    private boolean giveawayEvent() {
         return recipt.calculateTotal() >= 120000;
     }
 
