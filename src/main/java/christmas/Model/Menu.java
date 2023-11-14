@@ -41,6 +41,7 @@ public enum Menu {
     public int getPrice(){
         return price;
     }
+    public String getName(){return name;}
 
     private static boolean isContainedMenu(Menu menu, String menuName) {
         return menuName.equals(menu.name);
