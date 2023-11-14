@@ -21,10 +21,11 @@ public class EventManager {
     }
 
     public String getEvent() {
-        if (calculateTotalEventPrice() <= 0) {
-            return "없음";
-        }
         StringBuilder sb = new StringBuilder();
+        if (calculateTotalEventPrice() == 0) {
+            sb.append("없음\n");
+            return sb.toString();
+        }
         events.values()
                 .forEach(event -> event.EventStringBuild(sb));
         return sb.toString();
@@ -52,13 +53,13 @@ public class EventManager {
         if (events.isEmpty()) {
             return 0;
         }
-        return events.values().stream()
+        return -events.values().stream()
                 .mapToInt(Event::getPrice)
                 .sum();
     }
 
     public int calculateExpectedPrice() {
-        return recipt.calculateTotal() - (calculateTotalEventPrice() - getEventPrice(EventName.GIVEAWAY_EVENT));
+        return recipt.calculateTotal() + (calculateTotalEventPrice() + getEventPrice(EventName.GIVEAWAY_EVENT));
     }
 
     public Badge giveBadge() {
