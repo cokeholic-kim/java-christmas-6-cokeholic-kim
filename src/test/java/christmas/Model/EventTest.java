@@ -79,7 +79,7 @@ class EventTest {
         EventManager event = new EventManager(new Recipt("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1"), 3);
         assertThat(
                 event.calculateTotalEventPrice()
-        ).isEqualTo(31246);
+        ).isEqualTo(-31246);
     }
 
     @Test
@@ -94,8 +94,8 @@ class EventTest {
 
     @Test
     @DisplayName("예상결제금액 테스트")
-    void expectedPriceTest(){
-        EventManager event = new EventManager(new Recipt("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1"),3);
+    void expectedPriceTest() {
+        EventManager event = new EventManager(new Recipt("티본스테이크-1,바비큐립-1,초코케이크-2,제로콜라-1"), 3);
         assertThat(
                 event.calculateExpectedPrice()
         ).isEqualTo(135754);
@@ -103,8 +103,8 @@ class EventTest {
 
     @Test
     @DisplayName("예상결제금액 테스트2")
-    void expectedPriceTest2(){
-        EventManager event = new EventManager(new Recipt("타파스-1,제로콜라-1"),26);
+    void expectedPriceTest2() {
+        EventManager event = new EventManager(new Recipt("타파스-1,제로콜라-1"), 26);
         assertThat(
                 event.calculateExpectedPrice()
         ).isEqualTo(8500);
