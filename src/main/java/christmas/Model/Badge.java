@@ -16,6 +16,10 @@ public enum Badge {
         this.badgeName = badgeName;
     }
 
+    public String getBadgeName(){
+        return badgeName;
+    }
+
     public static Badge returnBadge(int price){
         return Arrays.stream(Badge.values())
                 .sorted((b1,b2) -> Integer.compare(b2.minimumPrice, b1.minimumPrice))
