@@ -13,13 +13,13 @@ class ReciptTest {
     @DisplayName("주문한 금액의 총합을 계산")
     void calculateTotal() {
         assertThat(
-         recipt.calculateTotal()
+                recipt.calculateTotal()
         ).isEqualTo(142000);
     }
 
     @Test
     @DisplayName("디저트의 갯수를 카운트")
-    void countDessertTest(){
+    void countDessertTest() {
         assertThat(
                 recipt.countCategory("dessert")
         ).isEqualTo(2);
@@ -27,7 +27,7 @@ class ReciptTest {
 
     @Test
     @DisplayName("메인의 갯수를 카운트")
-    void countMainTest(){
+    void countMainTest() {
         assertThat(
                 recipt.countCategory("main")
         ).isEqualTo(2);

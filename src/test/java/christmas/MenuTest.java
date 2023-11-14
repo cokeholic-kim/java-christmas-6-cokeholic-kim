@@ -33,22 +33,22 @@ class MenuTest {
         ).isEqualTo(expected);
     }
 
-    static Stream<Arguments> menuParameter(){
+    static Stream<Arguments> menuParameter() {
         return Stream.of(
-                Arguments.of("양송이수프",MUSHROOM_SOUP),
-                Arguments.of("타파스",TAPAS),
-                Arguments.of("시저샐러드",CAESAR_SALAD),
-                Arguments.of("티본스테이크",TBONE_STEAK),
-                Arguments.of("바비큐립",BARBECUE_RIB),
-                Arguments.of("해산물파스타",SEAFOOD_PASTA),
-                Arguments.of("크리스마스파스타",CHRISTMAS_PASTA),
-                Arguments.of("초코케이크",CHOCOLATE_CAKE),
-                Arguments.of("아이스크림",ICECREAM),
-                Arguments.of("제로콜라",ZERO_COKE),
-                Arguments.of("레드와인",RED_WINE),
-                Arguments.of("샴페인",CHAMPAGNE),
-                Arguments.of("다이어트콜라",NONE),
-                Arguments.of("아무런 값이나 입력함",NONE)
+                Arguments.of("양송이수프", MUSHROOM_SOUP),
+                Arguments.of("타파스", TAPAS),
+                Arguments.of("시저샐러드", CAESAR_SALAD),
+                Arguments.of("티본스테이크", TBONE_STEAK),
+                Arguments.of("바비큐립", BARBECUE_RIB),
+                Arguments.of("해산물파스타", SEAFOOD_PASTA),
+                Arguments.of("크리스마스파스타", CHRISTMAS_PASTA),
+                Arguments.of("초코케이크", CHOCOLATE_CAKE),
+                Arguments.of("아이스크림", ICECREAM),
+                Arguments.of("제로콜라", ZERO_COKE),
+                Arguments.of("레드와인", RED_WINE),
+                Arguments.of("샴페인", CHAMPAGNE),
+                Arguments.of("다이어트콜라", NONE),
+                Arguments.of("아무런 값이나 입력함", NONE)
         );
     }
 }
