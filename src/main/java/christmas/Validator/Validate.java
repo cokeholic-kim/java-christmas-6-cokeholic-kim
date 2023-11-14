@@ -95,10 +95,4 @@ public class Validate {
         });
         return menu;
     }
-
-    private static int countMenuQuantity(Map<String, Integer> mapppedOrder) {
-        return mapppedOrder.values().stream()
-                .mapToInt(Integer::intValue)
-                .sum();
-    }
 }
